@@ -17,7 +17,15 @@
 
 ## 安裝（專案隔離，不動全域）
 
-在**目標專案的根目錄**執行：
+**一行安裝，免 clone**——在**目標專案的根目錄**執行：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Adaimade/Fable5Skills/main/install.sh | sh -s -- install
+```
+
+腳本會自動下載庫的 tarball 到暫存目錄、安裝進該專案的 `.claude/skills/`、用完即焚。其他子指令同理（`status` / `off` / `on` / `remove`）。
+
+已 clone 的話也可以本地執行：
 
 ```bash
 sh /path/to/Fable5Skills/install.sh install   # 裝進該專案的 .claude/skills/
