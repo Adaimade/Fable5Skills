@@ -87,8 +87,18 @@ fi
 
 src_version() {
   if [ -n "$TMP_SRC" ]; then
-    # Tarball dir name ends in the commit SHA: <owner>-<repo>-<sha>
-    printf '%s' "${SRC_ROOT##*-}" | cut -c1-7
+    # gh tarball dirs end in the commit SHA (<owner>-<repo>-<sha>);
+    # curl/codeload dirs end in the branch name (<repo>-main).
+    suffix="${SRC_ROOT##*-}"
+    case "$suffix" in
+      *[!0-9a-f]*|??????) # not pure hex, or shorter than 7 chars: branch name
+        # Public API lookup for the real SHA; fall back to the branch name.
+        sha=$(curl -fsSL "https://api.github.com/repos/$REPO_SLUG/commits/main" 2>/dev/null \
+          | grep -m1 '"sha"' | cut -d'"' -f4 | cut -c1-7) || sha=''
+        printf '%s' "${sha:-$suffix}"
+        ;;
+      *) printf '%s' "$suffix" | cut -c1-7 ;;
+    esac
   elif command -v git >/dev/null 2>&1 && git -C "$SRC_ROOT" rev-parse --short HEAD >/dev/null 2>&1; then
     git -C "$SRC_ROOT" rev-parse --short HEAD
   else
