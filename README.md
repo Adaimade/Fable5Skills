@@ -1,19 +1,25 @@
-# Fable5Skills — Fable Thinking 技能庫
+# Fable5Skills — 讓 AI 助手像資深工程師一樣思考
 
-把 Fable 5（distinguished-engineer 等級模型）的工作思考方法萃取成 **15 個不綁定任何專案的技能**，讓中階工程師與較小的模型（Sonnet 級）在**任何專案**都能以相同紀律進行除錯、擴充、驗證與研究。
+用 AI 寫程式時，你可能遇過這些狀況：AI 說「修好了」結果根本沒修好；它自信滿滿地給你一段指令，跑下去才發現那個指令根本不存在；或是你只請它改一個小地方，它卻把整個檔案重寫、順便弄壞了原本好好的功能。
+
+這個專案就是為了解決這些問題。
+
+它是一套「工作習慣說明書」——把頂尖 AI 模型（Fable 5）做事時的思考紀律整理成 **15 份手冊**，裝進你的專案後，AI 助手在動工前會先查證、做完會先驗證、遇到問題會找真正的原因，而不是敷衍了事。就像幫新員工配一位資深師傅：不是換一個更聰明的人，而是讓現有的人**用對的方法做事**。
+
+不管你的專案是什麼語言、什麼領域都能用，安裝只要一行指令，而且只影響你指定的專案，隨時可以停用或移除。
 
 > A project-agnostic skill library that extracts Fable-class working methodology into 15 portable skills, so mid-level engineers and Sonnet-class models can debug, extend, validate, and research at the same standard — in any project.
 
 ## 這個庫防什麼？
 
-四個代價最高的失敗模式（founding pain points，2026-07-13）：
+四種最浪費時間的 AI 失誤（founding pain points，2026-07-13）：
 
-| # | 失敗模式 | 主防技能 |
-|---|---|---|
-| P1 | 宣稱完成但沒驗證（「已修好」但根本沒跑過） | fable-verification-standards |
-| P2 | 幻覺 API／路徑／旗標（runbook 看起來對但跑不動） | fable-ground-truth |
-| P3 | 淺層修補不找根因（try/except 滅音、改測試遷就） | fable-debugging-playbook |
-| P4 | 未經要求的重寫／破壞既有功能 | fable-scope-and-change-control |
+| # | 失誤 | 白話說明 | 主防技能 |
+|---|---|---|---|
+| P1 | 宣稱完成但沒驗證 | 說「已修好」，但根本沒跑過、沒確認過 | fable-verification-standards |
+| P2 | 編造不存在的東西 | 給你看起來很對的指令或路徑，實際上是它「想像」出來的 | fable-ground-truth |
+| P3 | 治標不治本 | 把錯誤訊息藏起來、讓測試放水過關，問題根源還在 | fable-debugging-playbook |
+| P4 | 沒被要求就亂改 | 只請它改一處，它重寫一片，弄壞原本正常的功能 | fable-scope-and-change-control |
 
 ## 安裝（專案隔離，不動全域）
 
